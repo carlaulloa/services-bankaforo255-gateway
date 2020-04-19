@@ -35,14 +35,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			/*.antMatchers("/api/security/oauth/**").permitAll()
+			.antMatchers("/api/security/oauth/**").permitAll()
 			.antMatchers(HttpMethod.GET, 
 					"/api/account/v1/accounts/**",
 					"/api/historical/v1/transactions/**").hasAnyRole("ADMIN", "USER")
 			.antMatchers("/api/deposit/**").hasAnyRole("ADMIN", "USER")
-			.antMatchers("/api/withdrawal/**").hasAnyRole("ADMIN")*/
+			.antMatchers("/api/withdrawal/**").hasAnyRole("ADMIN")
 			.anyRequest()
-			.permitAll()
+			.authenticated()
 			.and()
 			.cors().configurationSource(configurationSource());
 	}
